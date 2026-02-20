@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SILENT - Cheats para Valorant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Gradientes personalizados */
+        .gradient-text {
+            background: linear-gradient(45deg, #ff0000, #ff4444, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a0000 0%, #000000 50%, #1a0000 100%);
+        }
+
+        .gradient-border {
+            position: relative;
+            border: 2px solid transparent;
+            background: linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+                        linear-gradient(45deg, #ff0000, #660000) border-box;
+            border-radius: 10px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, transparent, #ff0000, transparent) 1;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff0000, transparent);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 20% 50%, #1a0000 0%, #000000 70%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0 L100 100 M100 0 L0 100" stroke="rgba(255,0,0,0.03)" stroke-width="1"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(45deg, #ff0000, #ff6666, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 6rem;
+            display: block;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 2rem 0;
+            color: #cccccc;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff0000, #990000);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 5%;
+            background: #0a0a0a;
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, #111111, #000000);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ff0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff0000, #660000);
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            color: #ff0000;
+        }
+
+        .testimonial-time {
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 4rem 5%;
+            background: linear-gradient(180deg, #0a0a0a, #000000);
+        }
+
+        .faq-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .faq h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            background: linear-gradient(145deg, #111111, #000000);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid #330000;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #ff0000;
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+        }
+
+        .faq-question {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ff0000;
+        }
+
+        .faq-check {
+            color: #00ff00;
+            margin-left: 0.5rem;
+        }
+
+        /* Status Table Section */
+        .status-section {
+            padding: 4rem 5%;
+            background: #000000;
+        }
+
+        .status-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .status-table {
+            background: linear-gradient(145deg, #111111, #000000);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid #330000;
+        }
+
+        .status-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .status-header h3 {
+            font-size: 2rem;
+            color: #ff0000;
+        }
+
+        .status-header p {
+            color: #888888;
+        }
+
+        .table-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .table-item {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #330000;
+        }
+
+        .table-item span {
+            color: #ff0000;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: #050505;
+            padding: 4rem 5% 2rem;
+            border-top: 2px solid;
+            border-image: linear-gradient(90deg, transparent, #ff0000, transparent) 1;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: #ff0000;
+            margin-bottom: 1rem;
+        }
+
+        .discord-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff0000, #990000);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .discord-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #330000;
+            color: #666666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero .highlight {
+                font-size: 4rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .table-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                SILENT<span>STORE</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#status">STATUS</a></li>
+                    <li><a href="#support">SUPPORT</a></li>
+                    <li><a href="https://discord.gg/UGekRDRmvu" target="_blank">STORE</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>
+                    DOMINE COM<br>
+                    <span class="highlight">SILENT</span>
+                </h1>
+                <p class="hero-description">
+                    Jogabilidade indetectável, Hardware Spoofer líder do setor, bypass de emulador com um clique, bypass do Vanguard Heartbeat, internal completo com todos os recursos e muito mais.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://discord.gg/UGekRDRmvu" target="_blank" class="btn btn-primary">COMPRE AGORA</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">EternalKing</div>
+                            <div class="testimonial-time">Just Now</div>
+                        </div>
+                    </div>
+                    <p>Melhor cheat do mercado, funcionou certinho</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div>
+                            <div class="testimonial-name">Sorenozen</div>
+                            <div class="testimonial-time">Just Now</div>
+                        </div>
+                    </div>
+                    <p>Silent é o melhor serviço se você está planejando ter vantagem no Valorant. Compre com SILENT</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="support">
+            <div class="faq-container">
+                <h2>Encontre respostas para perguntas comuns sobre nossos produtos e serviços</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">Nosso cheat é indetectável? <span class="faq-check">✔</span></div>
+                        <p>Nossos cheats são constantemente atualizados para garantir que permaneçam indetectáveis.</p>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Quais métodos de pagamento vocês aceitam? <span class="faq-check">✔</span></div>
+                        <p>Aceitamos criptomoedas, PayPal, vários gift cards e bancos brasileiros.</p>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Quão rápido receberei meu produto? <span class="faq-check">✔</span></div>
+                        <p>A entrega é instantânea após a confirmação do pagamento.</p>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">O suporte ao cliente está disponível? <span class="faq-check">✔</span></div>
+                        <p>Suporte 24/7 via Discord.</p>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Posso usar o cheat em vários PCs? <span class="faq-check">✔</span></div>
+                        <p>Não, pois você recebe apenas uma key.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status Section -->
+        <section class="status-section" id="status">
+            <div class="status-container">
+                <div class="status-table">
+                    <div class="status-header">
+    <h3>HISTÓRICO DE HARWARE</h3>
+    <p>VERSÕES DO SPOOFER E STATUS DE BYPASS</p>
+    <p style="color: #ff0000;">IMORTAL #21 #260 • LIMPO</p>
+</div>
+<div class="table-grid">
+    <div class="table-item">SPOOFER <span>v25.7.5</span></div>
+    <div class="table-item">SPOOFER <span>v25.7.6</span></div>
+    <div class="table-item">SPOOFER <span>v25.7.7</span></div>
+    <div class="table-item">SPOOFER <span>v25.7.8</span></div>
+    <!-- etc -->
+</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>SILENT</h3>
+                <p>Domine o jogo com as melhores cheats do mercado.</p>
+            </div>
+            <div class="footer-section">
+                <h3>TEM DÚVIDAS?</h3>
+                <p>Visite nosso discord para um suporte instantaneo e seguro.</p>
+                <a href="https://discord.gg/UGekRDRmvu" target="_blank" class="discord-btn">Entre no nosso discord →</a>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#status" style="color: #ff0000; text-decoration: none;">STATUS</a></p>
+                <p><a href="#support" style="color: #ff0000; text-decoration: none;">SUPPORT</a></p>
+                <p><a href="https://discord.gg/UGekRDRmvu" target="_blank" style="color: #ff0000; text-decoration: none;">STORE</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 SILENTSTORE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efeito de glitch no título (opcional)
+        const logo = document.querySelector('.logo');
+        setInterval(() => {
+            logo.style.textShadow = '2px 2px 0 #ff0000, -2px -2px 0 #ff0000';
+            setTimeout(() => {
+                logo.style.textShadow = 'none';
+            }, 100);
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALORANT AIM COLOR | PRIVATE WEB 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, #1a0000 0%, #000000 80%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid #330000;
+            padding: 1.5rem;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(145deg, #111111, #000000);
+            border-radius: 40px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #330000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ff0000;
+        }
+
+        .nav-link.active {
+            background: linear-gradient(45deg, #ff0000, #990000);
+            color: #ffffff;
+        }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            padding: 0.4rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #ff0000;
+            color: #000000;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #330000;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .header h1 span {
+            background: linear-gradient(45deg, #ff0000, #ff6666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem;
+        }
+
+        .header .subtitle {
+            color: #666666;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .header .subtitle span {
+            color: #ff0000;
+        }
+
+        /* Main content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards de configuração */
+        .config-card {
+            background: linear-gradient(145deg, #111111, #000000);
+            border-radius: 15px;
+            padding: 1.2rem;
+            border: 1px solid #330000;
+        }
+
+        .config-card h2 {
+            color: #ff0000;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #330000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .config-card h2 i {
+            font-size: 1rem;
+        }
+
+        .config-section {
+            margin-bottom: 1.2rem;
+        }
+
+        .config-section h3 {
+            color: #cccccc;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        /* Itens de configuração */
+        .config-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 0.6rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            margin-bottom: 0.3rem;
+            border: 1px solid #222222;
+            font-size: 0.9rem;
+        }
+
+        .config-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .config-label i {
+            color: #ff0000;
+            font-size: 0.9rem;
+        }
+
+        .config-value {
+            background: #1a1a1a;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Toggles */
+        .toggle-switch {
+            position: relative;
+            width: 45px;
+            height: 22px;
+            background: #1a1a1a;
+            border-radius: 30px;
+            border: 1px solid #330000;
+            cursor: pointer;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(145deg, #ff0000, #990000);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .toggle-switch.active::after {
+            left: 25px;
+        }
+
+        /* Sliders */
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .slider {
+            flex: 1;
+            height: 4px;
+            background: linear-gradient(90deg, #330000, #ff0000);
+            border-radius: 2px;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #ff0000;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+        }
+
+        .slider-value {
+            min-width: 40px;
+            text-align: center;
+            background: #1a1a1a;
+            padding: 0.2rem;
+            border-radius: 8px;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Color Grid - Uma cor de cada */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.3rem;
+            margin: 0.5rem 0;
+        }
+
+        .color-box {
+            aspect-ratio: 1;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .color-box:hover {
+            transform: scale(1.1);
+            border-color: #ffffff;
+        }
+
+        .color-box.selected {
+            border-color: #ffffff;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        /* Cores - Uma de cada */
+        .red { background: #ff0000; }
+        .purple { background: #aa00ff; }
+        .blue { background: #0066ff; }
+        .green { background: #00ff00; }
+        .yellow { background: #ffff00; }
+        .orange { background: #ff6600; }
+        .pink { background: #ff69b4; }
+        .cyan { background: #00ffff; }
+        .white { background: #ffffff; }
+        .black { background: #000000; border: 1px solid #333; }
+        .brown { background: #8b4513; }
+        .gray { background: #808080; }
+
+        /* Preview */
+        .preview-small {
+            background: #000000;
+            border-radius: 10px;
+            padding: 1rem;
+            border: 1px solid #330000;
+            margin-top: 0.5rem;
+        }
+
+        .preview-area {
+            height: 80px;
+            background: linear-gradient(45deg, #1a1a1a, #000000);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            margin-top: 1.5rem;
+            padding: 0.8rem 1rem;
+            background: linear-gradient(145deg, #111111, #000000);
+            border-radius: 12px;
+            border: 1px solid #330000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .status-info {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #666666;
+            transition: all 0.3s;
+        }
+
+        .status-dot.active {
+            background: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            animation: pulse 2s infinite;
+        }
+
+        .inject-btn {
+            background: transparent;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 1rem;
+        }
+
+        .inject-btn:hover {
+            background: #ff0000;
+            color: #000000;
+        }
+
+        .inject-btn.active {
+            background: #00ff00;
+            border-color: #00ff00;
+            color: #000000;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .save-btn {
+            background: linear-gradient(45deg, #ff0000, #990000);
+            color: #ffffff;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: #666666;
+            font-size: 0.7rem;
+            border-top: 1px solid #330000;
+            padding-top: 1rem;
+        }
+
+        .footer span {
+            color: #ff0000;
+        }
+
+        /* Valorant badge */
+        .valorant-badge {
+            position: absolute;
+            top: 0.8rem;
+            right: 1rem;
+            background: rgba(255, 0, 0, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            font-size: 0.7rem;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #330000;
+            border-top: 3px solid #ff0000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: #ff0000;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">LOGOUT...</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="valorant-badge">PRIVATE WEB 2026</div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="nav-links">
+                <a href="#" class="nav-link active" id="aimbotLink">AIMBOT</a>
+                <a href="#" class="nav-link" id="aimAssistLink">ASSIST</a>
+                <a href="#" class="nav-link" id="rageLink">RAGE</a>
+            </div>
+            <button class="logout-btn" id="logoutBtn">LOGOUT</button>
+        </div>
+
+        <div class="header">
+            <h1>VALORANT <span>AIM COLOR</span></h1>
+            <div class="subtitle">
+                <span>●</span> PRIVATE CONFIGURATION PANEL <span>●</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Coluna Esquerda -->
+            <div class="config-card">
+                <h2><i>⚡</i> <span id="configTitle">Aimbot</span></h2>
+
+                <div class="config-section">
+                    <div class="config-item">
+                        <span class="config-label"><i>🔘</i> Active</span>
+                        <div class="toggle-switch active"></div>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label"><i>⌨️</i> Keybind</span>
+                        <span class="config-value">XButton2</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label"><i>🎯</i> Target</span>
+                        <span class="config-value">Head</span>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>FOV</h3>
+                    <div class="config-item">
+                        <span class="config-label"><i>◯</i> Draw Circle</span>
+                        <div class="toggle-switch"></div>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label"><i>👁️</i> FOV Size</span>
+                        <div class="slider-container">
+                            <input type="range" class="slider" min="0" max="180" value="50">
+                            <span class="slider-value">50°</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Motion</h3>
+                    <div class="config-item">
+                        <span class="config-label"><i>⚡</i> Speed X</span>
+                        <div class="slider-container">
+                            <input type="range" class="slider" min="0" max="300" value="150">
+                            <span class="slider-value">150</span>
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label"><i>⚡</i> Speed Y</span>
+                        <div class="slider-container">
+                            <input type="range" class="slider" min="0" max="300" value="150">
+                            <span class="slider-value">150</span>
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label"><i>🔄</i> Smooth</span>
+                        <div class="slider-container">
+                            <input type="range" class="slider" min="0" max="20" value="4">
+                            <span class="slider-value">4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna Direita - FOV -->
+            <div class="config-card">
+                <h2><i>🎯</i> FOV Settings</h2>
+
+                <div class="config-section">
+                    <h3>Color Selection</h3>
+                    <div class="color-grid">
+                        <div class="color-box red selected" title="Red"></div>
+                        <div class="color-box purple" title="Purple"></div>
+                        <div class="color-box blue" title="Blue"></div>
+                        <div class="color-box green" title="Green"></div>
+                        <div class="color-box yellow" title="Yellow"></div>
+                        <div class="color-box orange" title="Orange"></div>
+                        <div class="color-box pink" title="Pink"></div>
+                        <div class="color-box cyan" title="Cyan"></div>
+                        <div class="color-box white" title="White"></div>
+                        <div class="color-box black" title="Black"></div>
+                        <div class="color-box brown" title="Brown"></div>
+                        <div class="color-box gray" title="Gray"></div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Detection</h3>
+                    <div class="config-item">
+                        <span class="config-label"><i>🎨</i> Color Mode</span>
+                        <span class="config-value" style="background: #ff0000;">Red</span>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label"><i>🎚️</i> Tolerance</span>
+                        <div class="slider-container">
+                            <input type="range" class="slider" min="0" max="100" value="30">
+                            <span class="slider-value">30%</span>
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label"><i>📏</i> Offset</span>
+                        <span class="config-value">X-Axis</span>
+                    </div>
+                </div>
+
+                <div class="preview-small">
+                    <div class="preview-area">
+                        <div style="position: absolute; top: 50%; left: 50%; width: 60px; height: 60px; border: 1px solid #ff0000; border-radius: 50%; transform: translate(-50%, -50%);"></div>
+                        <div style="position: absolute; top: 30%; left: 60%; width: 12px; height: 12px; background: #ff0000; border-radius: 50%;"></div>
+                    </div>
+                    <p style="color: #666; font-size: 0.7rem; margin-top: 0.3rem;">Preview • Red mode</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-info">
+                <div class="status-item">
+                    <div class="status-dot" id="statusDot"></div>
+                    <span id="statusText">NOT INJECTED</span>
+                </div>
+                <button class="inject-btn" id="injectBtn">INJECT</button>
+                <div class="status-item">
+                    <span>🔒 BYPASS: ACTIVE</span>
+                </div>
+                <div class="status-item">
+                    <span>⚡ 12ms</span>
+                </div>
+            </div>
+            <button class="save-btn">SAVE</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>VALORANT AIM COLOR • <span>UNDETECTED</span> • 2026</p>
+        </div>
+    </div>
+
+    <script>
+        // Navegação
+        const navLinks = document.querySelectorAll('.nav-link');
+        const configTitle = document.getElementById('configTitle');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Inject button
+        const injectBtn = document.getElementById('injectBtn');
+        const statusDot = document.getElementById('statusDot');
+        const statusText = document.getElementById('statusText');
+
+        injectBtn.addEventListener('click', function() {
+            if (this.classList.contains('active')) {
+                // Desinject
+                this.classList.remove('active');
+                this.textContent = 'INJECT';
+                this.style.background = 'transparent';
+                this.style.color = '#ff0000';
+                statusDot.classList.remove('active');
+                statusText.textContent = 'NOT INJECTED';
+            } else {
+                // Inject
+                this.classList.add('active');
+                this.textContent = 'INJECTED';
+                this.style.background = '#00ff00';
+                this.style.color = '#000000';
+                statusDot.classList.add('active');
+                statusText.textContent = 'INJECTED';
+            }
+        });
+
+        function removeActiveClass() {
+            navLinks.forEach(link => link.classList.remove('active'));
+        }
+
+        // AIMBOT
+        document.getElementById('aimbotLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            removeActiveClass();
+            this.classList.add('active');
+            configTitle.textContent = 'Aimbot';
+        });
+
+        // AIM ASSIST
+        document.getElementById('aimAssistLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            removeActiveClass();
+            this.classList.add('active');
+            configTitle.textContent = 'Assist';
+        });
+
+        // RAGE
+        document.getElementById('rageLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            removeActiveClass();
+            this.classList.add('active');
+            configTitle.textContent = 'Rage';
+        });
+
+        // LOGOUT
+        logoutBtn.addEventListener('click', function() {
+            loadingOverlay.style.display = 'flex';
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+                alert('Logout realizado!');
+            }, 1000);
+        });
+
+        // Color selection
+        document.querySelectorAll('.color-box').forEach(box => {
+            box.addEventListener('click', function() {
+                document.querySelectorAll('.color-box').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Get color name
+                let colorName = 'Red';
+                if (this.classList.contains('purple')) colorName = 'Purple';
+                else if (this.classList.contains('blue')) colorName = 'Blue';
+                else if (this.classList.contains('green')) colorName = 'Green';
+                else if (this.classList.contains('yellow')) colorName = 'Yellow';
+                else if (this.classList.contains('orange')) colorName = 'Orange';
+                else if (this.classList.contains('pink')) colorName = 'Pink';
+                else if (this.classList.contains('cyan')) colorName = 'Cyan';
+                else if (this.classList.contains('white')) colorName = 'White';
+                else if (this.classList.contains('black')) colorName = 'Black';
+                else if (this.classList.contains('brown')) colorName = 'Brown';
+                else if (this.classList.contains('gray')) colorName = 'Gray';
+                
+                // Update color mode text and background
+                const colorMode = document.querySelector('.config-item .config-value');
+                colorMode.textContent = colorName;
+                
+                // Update preview dot color
+                const previewDot = document.querySelector('.preview-area div:last-child');
+                const color = window.getComputedStyle(this).backgroundColor;
+                previewDot.style.background = color;
+                
+                // Update circle border
+                const previewCircle = document.querySelector('.preview-area div:first-child');
+                previewCircle.style.borderColor = color;
+            });
+        });
+
+        // Toggle switches
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Sliders
+        document.querySelectorAll('.slider').forEach(slider => {
+            const valueDisplay = slider.nextElementSibling;
+            slider.addEventListener('input', function() {
+                const suffix = valueDisplay.textContent.includes('°') ? '°' : 
+                              valueDisplay.textContent.includes('%') ? '%' : '';
+                valueDisplay.textContent = this.value + suffix;
+            });
+        });
+
+        // Save button
+        document.querySelector('.save-btn').addEventListener('click', function() {
+            this.textContent = '✓';
+            this.style.background = 'linear-gradient(45deg, #00aa00, #006600)';
+            setTimeout(() => {
+                this.textContent = 'SAVE';
+                this.style.background = 'linear-gradient(45deg, #ff0000, #990000)';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
